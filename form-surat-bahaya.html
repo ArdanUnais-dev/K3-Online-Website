@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Izin Pekerjaan Berbahaya</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <!-- Title Logo -->
+    <link rel="icon" type="images/png" href="images/k3-logo.webp">
+    <!-- Title Logo -->
+
 </head>
 
 <body class="bg-gray-100 font-sans">
@@ -233,49 +239,57 @@
 
     <div class="bg-white p-8 rounded-lg shadow-lg max-w-5xl mx-auto">
         <!-- E. Pengawasan -->
-<div class="border-b pb-4 mb-4">
-    <h2 class="text-lg font-semibold mb-2">E. Pengawasan oleh PT. Toyota Motor Manufacturing Indonesia</h2>
-    <table class="w-full border-collapse border border-gray-300 text-sm">
-        <thead class="bg-gray-200">
-            <tr>
-                <th class="border border-gray-300 p-2">No</th>
-                <th class="border border-gray-300 p-2">User / Safety Officer Divisi</th>
-                <th class="border border-gray-300 p-2">No. Reg.</th>
-                <th class="border border-gray-300 p-2">No. Handphone</th>
-                <th class="border border-gray-300 p-2">Departemen / Seksi</th>
-                <th class="border border-gray-300 p-2">No. Anzen Leader</th>
-                <th class="border border-gray-300 p-2">Paraf</th>
-                <th class="border border-gray-300 p-2">Aksi</th>
-            </tr>
-        </thead>
-        <tbody id="pengawasTableBody">
-            <tr>
-                <td class="border border-gray-300 p-2">1</td>
-                <td class="border border-gray-300 p-2"><input type="text" class="w-full border-gray-300 rounded-lg p-2"></td>
-                <td class="border border-gray-300 p-2"><input type="text" class="w-full border-gray-300 rounded-lg p-2"></td>
-                <td class="border border-gray-300 p-2"><input type="text" class="w-full border-gray-300 rounded-lg p-2"></td>
-                <td class="border border-gray-300 p-2"><input type="text" class="w-full border-gray-300 rounded-lg p-2"></td>
-                <td class="border border-gray-300 p-2"><input type="text" class="w-full border-gray-300 rounded-lg p-2"></td>
-                <td class="border border-gray-300 p-2"><input type="text" class="w-full border-gray-300 rounded-lg p-2"></td>
-                <td class="border px-4 py-2 text-center">
-                    <button onclick="removeRow(this)" class="bg-red-500 text-white px-2 py-1 rounded">Hapus</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <button onclick="addRow()" class="mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Tambah Pengawas</button>
-</div>
-<!-- E. Pengawasan -->
+        <div class="border-b pb-4 mb-4">
+            <h2 class="text-lg font-semibold mb-2">E. Pengawasan oleh PT. Toyota Motor Manufacturing Indonesia</h2>
+            <table class="w-full border-collapse border border-gray-300 text-sm">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="border border-gray-300 p-2">No</th>
+                        <th class="border border-gray-300 p-2">User / Safety Officer Divisi</th>
+                        <th class="border border-gray-300 p-2">No. Reg.</th>
+                        <th class="border border-gray-300 p-2">No. Handphone</th>
+                        <th class="border border-gray-300 p-2">Departemen / Seksi</th>
+                        <th class="border border-gray-300 p-2">No. Anzen Leader</th>
+                        <th class="border border-gray-300 p-2">Paraf</th>
+                        <th class="border border-gray-300 p-2">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="pengawasTableBody">
+                    <tr>
+                        <td class="border border-gray-300 p-2">1</td>
+                        <td class="border border-gray-300 p-2"><input type="text"
+                                class="w-full border-gray-300 rounded-lg p-2"></td>
+                        <td class="border border-gray-300 p-2"><input type="text"
+                                class="w-full border-gray-300 rounded-lg p-2"></td>
+                        <td class="border border-gray-300 p-2"><input type="text"
+                                class="w-full border-gray-300 rounded-lg p-2"></td>
+                        <td class="border border-gray-300 p-2"><input type="text"
+                                class="w-full border-gray-300 rounded-lg p-2"></td>
+                        <td class="border border-gray-300 p-2"><input type="text"
+                                class="w-full border-gray-300 rounded-lg p-2"></td>
+                        <td class="border border-gray-300 p-2"><input type="text"
+                                class="w-full border-gray-300 rounded-lg p-2"></td>
+                        <td class="border px-4 py-2 text-center">
+                            <button onclick="removeRow(this)"
+                                class="bg-red-500 text-white px-2 py-1 rounded">Hapus</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button onclick="addRow()" class="mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Tambah
+                Pengawas</button>
+        </div>
+        <!-- E. Pengawasan -->
 
-<script>
-    let rowCount = 1; // Initialize row count to 1 since the first row already exists
+        <script>
+            let rowCount = 1; // Initialize row count to 1 since the first row already exists
 
-    function addRow() {
-        rowCount++; // Increment row count for new row
+            function addRow() {
+                rowCount++; // Increment row count for new row
 
-        // Create a new row
-        const newRow = document.createElement('tr');
-        newRow.innerHTML = `
+                // Create a new row
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
             <td class="border border-gray-300 p-2">${rowCount}</td>
             <td class="border border-gray-300 p-2"><input type="text" class="w-full border-gray-300 rounded-lg p-2"></td>
             <td class="border border-gray-300 p-2"><input type="text" class="w-full border-gray-300 rounded-lg p-2"></td>
@@ -288,21 +302,21 @@
             </td>
         `;
 
-        // Append the new row to the table body
-        document.getElementById('pengawasTableBody').appendChild(newRow);
-    }
+                // Append the new row to the table body
+                document.getElementById('pengawasTableBody').appendChild(newRow);
+            }
 
-    function removeRow(button) {
-        const row = button.closest('tr');
-        row.remove();
-        
-        // Re-number rows
-        let rows = document.querySelectorAll('#pengawasTableBody tr');
-        rows.forEach((row, index) => {
-            row.cells[0].textContent = index + 1;
-        });
-    }
-</script>
+            function removeRow(button) {
+                const row = button.closest('tr');
+                row.remove();
+
+                // Re-number rows
+                let rows = document.querySelectorAll('#pengawasTableBody tr');
+                rows.forEach((row, index) => {
+                    row.cells[0].textContent = index + 1;
+                });
+            }
+        </script>
 
 
 
