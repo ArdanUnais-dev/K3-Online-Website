@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sertifikat AL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .selected {
+            border: 4px solid green;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-6 min-h-screen flex flex-col items-center">
+    <h2 class="text-2xl font-bold text-green-800 mb-6 bg-green-200 px-6 py-3 rounded-lg shadow-xl">Pilih Sertifikat AL</h2>
+    
+    <div id="image-container" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <img src="folder-sertifikat-al/sertifikat-al-1.jpg" alt="Sertifikat 1" class="certificate w-80 h-80 object-cover border rounded-lg shadow-md cursor-pointer hover:opacity-75" data-id="1">
+        <img src="sertifikat2.jpg" alt="Sertifikat 2" class="certificate w-80 h-80 object-cover border rounded-lg shadow-md cursor-pointer hover:opacity-75" data-id="2">
+        <img src="sertifikat3.jpg" alt="Sertifikat 3" class="certificate w-80 h-80 object-cover border rounded-lg shadow-md cursor-pointer hover:opacity-75" data-id="3">
+        <img src="sertifikat4.jpg" alt="Sertifikat 4" class="certificate w-80 h-80 object-cover border rounded-lg shadow-md cursor-pointer hover:opacity-75" data-id="4">
+        <img src="sertifikat5.jpg" alt="Sertifikat 5" class="certificate w-80 h-80 object-cover border rounded-lg shadow-md cursor-pointer hover:opacity-75" data-id="5">
+        <img src="sertifikat6.jpg" alt="Sertifikat 6" class="certificate w-80 h-80 object-cover border rounded-lg shadow-md cursor-pointer hover:opacity-75" data-id="6">
+    </div>
+
+    <button onclick="saveSelection()"
+        class="mt-6 bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-all duration-300 shadow-md font-semibold">
+        Simpan Pilihan
+    </button>
+
+    <button onclick="goBack()"
+        class="mt-3 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-all duration-300 shadow-md font-semibold">
+        Kembali
+    </button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const images = document.querySelectorAll(".certificate");
+            const selectedImages = JSON.parse(localStorage.getItem("selectedCertificates")) || [];
+
+            // Tampilkan pilihan sebelumnya
+            images.forEach(img => {
+                if (selectedImages.includes(img.getAttribute("data-id"))) {
+                    img.classList.add("selected");
+                }
+                
+                img.addEventListener("click", function () {
+                    toggleSelection(img);
+                });
+            });
+        });
+
+        function toggleSelection(img) {
+            img.classList.toggle("selected");
+        }
+
+        function saveSelection() {
+            const selectedImages = Array.from(document.querySelectorAll(".certificate.selected"))
+                .map(img => img.getAttribute("data-id"));
+
+            localStorage.setItem("selectedCertificates", JSON.stringify(selectedImages));
+            alert("Pilihan telah disimpan!");
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

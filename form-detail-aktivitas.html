@@ -114,7 +114,7 @@
         <li><input type="checkbox" class="mr-2"> Safety Fence (Rompi)</li>
       </ul>
     </div>
-    
+
     <!-- Work Instruction & Denwacho -->
     <div class="mt-6">
       <h2 class="font-bold border-b pb-2 mb-4">WORK INSTRUCTION & DENWACHO</h2>
@@ -151,9 +151,10 @@
           </tr>
         </tbody>
       </table>
-      <button onclick="addRow()" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Tambah Baris</button>
+      <button onclick="addRow()" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Tambah
+        Baris</button>
     </div>
-    
+
     <script>
       function addRow() {
         const table = document.getElementById("workTable").getElementsByTagName('tbody')[0];
@@ -176,116 +177,132 @@
                               <button onclick='removeRow(this)' class='text-white bg-red-500 px-2 py-1 rounded'>Hapus</button>
                             </td>`;
       }
-    
+
       function removeRow(button) {
         button.closest("tr").remove();
       }
     </script>
-    
+
     <!-- Work Instruction & Denwacho -->
 
     <!-- Work Procedure & KY 3R -->
-
     <div class="mt-20">
       <h2 class="text-xl font-bold border-b pb-2 mb-4">WORK PROCEDURE & KY 3R</h2>
-      
+
       <table class="w-full border-collapse border border-gray-400 mb-4">
         <thead>
-            <tr class="bg-gray-200">
-                <th class="border border-gray-400 px-3 py-2">No</th>
-                <th class="border border-gray-400 px-3 py-2">Prosedur Kerja</th>
-                <th class="border border-gray-400 px-3 py-2">Point Penting</th>
-                <th class="border border-gray-400 px-3 py-2">Aksi</th>
-            </tr>
+          <tr class="bg-gray-200">
+            <th class="border border-gray-400 px-3 py-2">No</th>
+            <th class="border border-gray-400 px-3 py-2">Prosedur Kerja</th>
+            <th class="border border-gray-400 px-3 py-2">Point Penting</th>
+            <th class="border border-gray-400 px-3 py-2">Upload Gambar</th>
+          </tr>
         </thead>
         <tbody id="procedureTable">
-            <tr>
-                <td class="border border-gray-400 px-2 py-1 text-center">1</td>
-                <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="Prosedur Kerja" class="w-full p-1"></td>
-                <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="Point Penting" class="w-full p-1"></td>
-                <td class="border border-gray-400 px-2 py-1 text-center"><button onclick="removeRow(this)" class="bg-red-500 text-white px-2 py-1 rounded">Hapus</button></td>
-            </tr>
+          <tr>
+            <td class="border border-gray-400 px-2 py-1 text-center">1</td>
+            <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="Prosedur Kerja"
+                class="w-full p-1"></td>
+            <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="Point Penting"
+                class="w-full p-1"></td>
+            <td class="border border-gray-400 px-2 py-1 text-center">
+              <input type="file" accept="image/*" onchange="previewImage(event, this)" class="w-full">
+              <div class="imagePreview mt-2"></div>
+            </td>
+          </tr>
         </tbody>
-    </table>
-    
-    <!-- Input untuk Upload Gambar -->
-    <input type="file" id="imageUpload" accept="image/*" onchange="previewImage(event)" class="mb-4">
-    
-    <!-- Tempat Menampilkan Gambar -->
-    <div id="imagePreview" class="mt-4"></div>
-    
-    <script>
-    function removeRow(button) {
-        let row = button.parentElement.parentElement;
-        row.remove();
-    }
-    
-    function previewImage(event) {
-        let imagePreview = document.getElementById('imagePreview');
-        imagePreview.innerHTML = ''; // Kosongkan preview sebelumnya
-        let file = event.target.files[0];
-        
-        if (file) {
+      </table>
+
+      <script>
+        function previewImage(event, input) {
+          let imagePreview = input.nextElementSibling;
+          imagePreview.innerHTML = ''; // Kosongkan preview sebelumnya
+          let file = event.target.files[0];
+
+          if (file) {
             let reader = new FileReader();
-            reader.onload = function(e) {
-                let img = document.createElement('img');
-                img.src = e.target.result;
-                img.classList.add('w-32', 'h-auto', 'border', 'border-gray-400', 'rounded', 'shadow');
-                imagePreview.appendChild(img);
+            reader.onload = function (e) {
+              let img = document.createElement('img');
+              img.src = e.target.result;
+              img.classList.add('w-32', 'h-auto', 'border', 'border-gray-400', 'rounded', 'shadow');
+              imagePreview.appendChild(img);
             }
             reader.readAsDataURL(file);
+          }
         }
-    }
-    </script>
-    
-      <button onclick="addProcedureRow()" class="bg-green-600 text-white px-3 py-2 rounded">Tambah Baris</button>
-      
-      <h3 class="text-lg font-bold mt-20">SITUASI BERBAHAYA</h3>
-      <table class="w-full border-collapse border border-gray-400">
-          <thead>
-              <tr class="bg-gray-200">
-                  <th class="border border-gray-400 px-3 py-2">No</th>
-                  <th class="border border-gray-400 px-3 py-2">Situasi Berbahaya</th>
-                  <th class="border border-gray-400 px-3 py-2">STOP 6</th>
-                  <th class="border border-gray-400 px-3 py-2">RANK</th>
-                  <th class="border border-gray-400 px-3 py-2">Penanggulangan</th>
-                  <th class="border border-gray-400 px-3 py-2">Aksi</th>
-              </tr>
-          </thead>
-          <tbody id="dangerTable">
-              <tr>
-                  <td class="border border-gray-400 px-2 py-1 text-center">1</td>
-                  <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="Situasi Berbahaya" class="w-full p-1"></td>
-                  <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="STOP 6" class="w-full p-1"></td>
-                  <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="RANK" class="w-full p-1"></td>
-                  <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="Penanggulangan" class="w-full p-1"></td>
-                  <td class="border border-gray-400 px-2 py-1 text-center"><button onclick="removeRow(this)" class="bg-red-500 text-white px-2 py-1 rounded">Hapus</button></td>
-              </tr>
-          </tbody>
-      </table>
-      <button onclick="addDangerRow()" class="bg-green-600 text-white px-3 py-2 mt-10 rounded-lg">Tambah Baris</button>
 
-      <footer class="text-center mt-10">
-        <h3>Pastikan Kondisi Kerja Aman & Selalu Pakai SPD Standard</h3>
+        function addProcedureRow() {
+          let table = document.getElementById("procedureTable");
+          let rowNumber = table.rows.length + 1; // Nomor otomatis
+          let row = document.createElement("tr");
+
+          row.innerHTML = `
+        <td class="border border-gray-400 px-2 py-1 text-center">${rowNumber}</td>
+        <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="Prosedur Kerja" class="w-full p-1"></td>
+        <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="Point Penting" class="w-full p-1"></td>
+        <td class="border border-gray-400 px-2 py-1 text-center">
+          <input type="file" accept="image/*" onchange="previewImage(event, this)" class="w-full">
+          <div class="imagePreview mt-2"></div>
+        </td>
+      `;
+          table.appendChild(row);
+        }
+      </script>
+
+      <button onclick="addProcedureRow()" class="bg-green-600 text-white px-3 py-2 rounded">Tambah Baris</button>
+    </div>
+
+
+    <h3 class="text-lg font-bold mt-20">SITUASI BERBAHAYA</h3>
+    <table class="w-full border-collapse border border-gray-400">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-400 px-3 py-2">No</th>
+          <th class="border border-gray-400 px-3 py-2">Situasi Berbahaya</th>
+          <th class="border border-gray-400 px-3 py-2">STOP 6</th>
+          <th class="border border-gray-400 px-3 py-2">RANK</th>
+          <th class="border border-gray-400 px-3 py-2">Penanggulangan</th>
+          <th class="border border-gray-400 px-3 py-2">Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="dangerTable">
+        <tr>
+          <td class="border border-gray-400 px-2 py-1 text-center">1</td>
+          <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="Situasi Berbahaya"
+              class="w-full p-1"></td>
+          <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="STOP 6" class="w-full p-1">
+          </td>
+          <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="RANK" class="w-full p-1"></td>
+          <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="Penanggulangan"
+              class="w-full p-1"></td>
+          <td class="border border-gray-400 px-2 py-1 text-center"><button onclick="removeRow(this)"
+              class="bg-red-500 text-white px-2 py-1 rounded">Hapus</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button onclick="addDangerRow()" class="bg-green-600 text-white px-3 py-2 mt-10 rounded-lg">Tambah Baris</button>
+
+    <footer class="text-center mt-10">
+      <h3>Pastikan Kondisi Kerja Aman & Selalu Pakai SPD Standard</h3>
     </footer>
   </div>
 
   <script>
-      function addProcedureRow() {
-          let table = document.getElementById('procedureTable');
-          let row = table.insertRow();
-          row.innerHTML = `
+    function addProcedureRow() {
+      let table = document.getElementById('procedureTable');
+      let row = table.insertRow();
+      row.innerHTML = `
               <td class="border border-gray-400 px-2 py-1 text-center">${table.rows.length}</td>
               <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="Prosedur Kerja" class="w-full p-1"></td>
               <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="Point Penting" class="w-full p-1"></td>
               <td class="border border-gray-400 px-2 py-1 text-center"><button onclick="removeRow(this)" class="bg-red-500 text-white px-2 py-1 rounded">Hapus</button></td>
           `;
-      }
-      
-      function addDangerRow() {
-          let table = document.getElementById('dangerTable');
-          let row = table.insertRow();
-          row.innerHTML = `
+    }
+
+    function addDangerRow() {
+      let table = document.getElementById('dangerTable');
+      let row = table.insertRow();
+      row.innerHTML = `
               <td class="border border-gray-400 px-2 py-1 text-center">${table.rows.length}</td>
               <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="Situasi Berbahaya" class="w-full p-1"></td>
               <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="STOP 6" class="w-full p-1"></td>
@@ -293,28 +310,28 @@
               <td class="border border-gray-400 px-2 py-1"><input type="text" placeholder="Penanggulangan" class="w-full p-1"></td>
               <td class="border border-gray-400 px-2 py-1 text-center"><button onclick="removeRow(this)" class="bg-red-500 text-white px-2 py-1 rounded">Hapus</button></td>
           `;
-      }
-      
-      function removeRow(button) {
-          let row = button.parentElement.parentElement;
-          row.parentElement.removeChild(row);
-      }
+    }
+
+    function removeRow(button) {
+      let row = button.parentElement.parentElement;
+      row.parentElement.removeChild(row);
+    }
   </script>
 
-    <!-- Work Procedure & KY 3R -->
+  <!-- Work Procedure & KY 3R -->
 
-    <!-- Submit Button -->
-    <div class="text-center mt-8 space-x-4 py-4 px-6 flex justify-center items-center">
-      <!-- Tombol Kembali -->
-      <a href="index.html"
-        class="bg-blue-500 text-white py-2 px-6 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">
-        Kembali
-      </a>
-      <!-- Tombol Submit -->
-      <button class="bg-green-600 text-white py-2 px-6 rounded-lg font-semibold hover:bg-green-700">
-        Submit
-      </button>
-    </div>
+  <!-- Submit Button -->
+  <div class="text-center mt-8 space-x-4 py-4 px-6 flex justify-center items-center">
+    <!-- Tombol Kembali -->
+    <a href="form-surat-bahaya.html"
+      class="bg-blue-500 text-white py-2 px-6 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">
+      Kembali
+    </a>
+    <!-- Tombol Submit -->
+    <button class="bg-green-600 text-white py-2 px-6 rounded-lg font-semibold hover:bg-green-700">
+      Submit
+    </button>
+  </div>
 
   </div>
 
